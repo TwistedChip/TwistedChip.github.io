@@ -65,11 +65,13 @@ $(document).ready(function(){
       });
   });
 
-  const spreadsheetId = '1sVW6kXy_-edkRz0r-CmbQYgiZNknn0D_6vozxFa9Yd8';
-  const range = 'Sheet1!A1:S13';
-  
-  const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`;
-  
+  const spreadsheetId = 'your-spreadsheet-id';
+  const range = 'Sheet1!A1:C10';
+  const apiKey = '377078011650-n865vak4amk5ak45nmt0qhceferd30el.apps.googleusercontent.com';
+
+  const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}?key=${apiKey}`;
+
+
   fetch(apiUrl)
     .then(response => response.json())
     .then(data => {
