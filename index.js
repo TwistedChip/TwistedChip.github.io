@@ -76,7 +76,7 @@ $(document).ready(function(){
       const values = data.values;
   
       // Get the container element
-      const container = document.getElementById('bio');
+      const container = document.getElementById('dataContainer');
   
       // Create a table
       const table = document.createElement('table');
