@@ -64,4 +64,42 @@ $(document).ready(function(){
        } 
       });
   });
+
+  const spreadsheetId = '1sVW6kXy_-edkRz0r-CmbQYgiZNknn0D_6vozxFa9Yd8';
+  const range = 'Sheet1!A1:S13';
+  
+  const apiUrl = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${range}`;
+  
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const values = data.values;
+  
+      // Get the container element
+      const container = document.getElementById('dataContainer');
+  
+      // Create a table
+      const table = document.createElement('table');
+  
+      // Loop through the rows
+      for (let i = 0; i < values.length; i++) {
+        const row = document.createElement('tr');
+  
+        // Loop through the columns
+        for (let j = 0; j < values[i].length; j++) {
+          const cell = document.createElement('td');
+          cell.textContent = values[i][j];
+          row.appendChild(cell);
+        }
+  
+        table.appendChild(row);
+      }
+  
+      // Append the table to the container
+      container.appendChild(table);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  
   
