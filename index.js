@@ -25,15 +25,16 @@ if ((width >= 1000)){
 }
 }
 
-function magnify(imglink){
-    $("#img_here").css("background",`url('${imglink}') center center`);
-    $("#img_here").append("<div class='image-text'>Your text here</div>");
-    $("#magnify").css("display","flex");
+function magnify(imglink, text) {
+    $("#img_here").css("background", `url('${imglink}') center center`);
+    $("#img_here").append(`<div class='image-text'>${text}</div>`);
+    $("#magnify").css("display", "flex");
     $("#magnify").addClass("animated fadeIn");
-    setTimeout(function(){
-        $("#magnify").removeClass("animated fadeIn");
-    },800);
-}
+    setTimeout(function() {
+      $("#magnify").removeClass("animated fadeIn");
+    }, 800);
+  }
+  
 
 function closemagnify(){
     $("#magnify").addClass("animated fadeOut");
