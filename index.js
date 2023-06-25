@@ -27,6 +27,7 @@ if ((width >= 1000)){
 
 function magnify(imglink){
     $("#img_here").css("background",`url('${imglink}') center center`);
+    $("#img_here").append("<div class='image-text'>Your text here</div>");
     $("#magnify").css("display","flex");
     $("#magnify").addClass("animated fadeIn");
     setTimeout(function(){
