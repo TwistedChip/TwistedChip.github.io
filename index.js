@@ -25,15 +25,25 @@ if ((width >= 1000)){
 }
 }
 
-function magnify(imglink, text) {
-    $("#img_here").css("background", `url('${imglink}') center center`);
-    $("#img_here").append(`<div class='image-text'>${text}</div>`);
-    $("#magnify").css("display", "flex");
-    $("#magnify").addClass("animated fadeIn");
-    setTimeout(function() {
-      $("#magnify").removeClass("animated fadeIn");
-    }, 800);
-  }
+function magnify(imglink) {
+  $("#img_here").css("background", `url('${imglink}') center center`);
+
+  // Remove any existing image-text elements
+  $("#img_here .image-text").remove();
+
+  // Retrieve the text from the clicked image's data-text attribute
+  const text = $(event.target).data("text");
+
+  // Add the text element with the retrieved text
+  const textElement = $("<div class='image-text'></div>").text(text);
+  $("#img_here").append(textElement);
+
+  $("#magnify").css("display", "flex");
+  $("#magnify").addClass("animated fadeIn");
+  setTimeout(function() {
+    $("#magnify").removeClass("animated fadeIn");
+  }, 800);
+}
   
 
 function closemagnify(){
