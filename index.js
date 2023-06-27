@@ -25,17 +25,17 @@ if ((width >= 1000)){
 }
 }
 
-function magnify(imglink) {
+function magnify(imglink, text, link) {
   $("#img_here").css("background", `url('${imglink}') center center`);
 
   // Remove any existing image-text elements
   $("#img_here .image-text").remove();
 
-  // Retrieve the text from the clicked image's data-text attribute
-  const text = $(event.target).data("text");
+  // Create the text element with the provided text and link
+  const textElement = $("<div class='image-text'></div>");
+  const linkElement = $("<a></a>").attr("href", link).text(text);
+  textElement.append(linkElement);
 
-  // Add the text element with the retrieved text
-  const textElement = $("<div class='image-text'></div>").text(text);
   $("#img_here").append(textElement);
 
   $("#magnify").css("display", "flex");
@@ -43,8 +43,7 @@ function magnify(imglink) {
   setTimeout(function() {
     $("#magnify").removeClass("animated fadeIn");
   }, 800);
-}
-  
+}  
 
 function closemagnify(){
     $("#magnify").addClass("animated fadeOut");
